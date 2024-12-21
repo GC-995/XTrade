@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cryptocurrencies converter and market tracker">
+  <meta name="keywords" content="Crypto, Cryptocurrency, Stock Market, Bitcoin">
+  <meta name="author" content="Kirill Kuznetsov, Prakriti Rajbhandari, MidzSreenivasan">
+  <title>Contact Us</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Krona+One|Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="main.css" />
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+
+  <style>
+    body {
+      font-family: 'Krona One', sans-serif;
+      background-color: #131722;
+      color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #131722;
+    }
+
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      color: #fff !important;
+      font-size: 24px;
+    }
+
+    .nav-link {
+      color: #f4f4f4 !important;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #d4af37 !important;
+    }
+
+    .active-link {
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .dropdown-menu {
+      background-color: #1c1f24;
+      border: none;
+      border-radius: 0;
+    }
+
+    .dropdown-item {
+      color: #f4f4f4;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #d4af37;
+    }
+
+    .tooltip-inner {
+      background-color: #d4af37;
+      color: #131722;
+    }
+
+    .arrow::before {
+      border-top-color: #d4af37 !important;
+    }
+
+    .form-container {
+      background-color: #1c1f24;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 1s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-control {
+      background-color: transparent !important;
+      border: none;
+      border-radius: 5px;
+      color: #f4f4f4;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border: 1px solid #d4af37;
+    }
+
+    .btn-send {
+      background-color: #d4af37;
+      color: #131722;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-send:hover {
+      background-color: #b8932d;
+      color: #fff;
+    }
+
+    .contact-image {
+      max-width: 100%;
+      animation: zoomIn 1s;
+    }
+
+    @media (max-width: 767px) {
+      .navbar {
+        background-color: #1c1f24;
+      }
+
+      .form-container {
+        margin-top: 30px;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body id="netBackground">
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="home.html">XTrade</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crypto.html">Crypto Currency</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="forex.html">Forex</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="stocks.html">Stocks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item active-link">
+          <a class="nav-link" href="contact.html">Contact us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4">
+          <img class="contact-image animated zoomIn" src="assets/img/contactUs.svg" alt="Contact us!">
+        </div>
+        <div class="col-lg-6">
+          <div class="form-container animated fadeInUp">
+            <h3 class="text-center mb-4">Get in Touch</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Your E-mail" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-send">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #1c1f24; color: #f4f4f4;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="successModalLabel">Thank You!</h5>
+            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <i class="fas fa-check-circle fa-3x mb-3" style="color: #d4af37;"></i>
+            <p>Your message has been successfully sent. We will get back to you shortly!</p>
+          </div>
+          <div class="modal-footer border-0 justify-content-center">
+            <button type="button" class="btn btn-send" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+
+    $('#contactForm').on('submit', function (e) {
+      e.preventDefault();
+      $('#successModal').modal('show');
+      $('#contactForm')[0].reset();
+    });
+  </script>
+</body>
+
+</html>

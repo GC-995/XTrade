@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cryptocurrencies converter and market tracker">
+  <meta name="keywords" content="Crypto, Cryptocurrency, Stock Market, Bitcoin">
+  <title>XTrade-Stocks</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Krona+One|Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="main.css" />
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Krona One', sans-serif;
+      background-color: #131722;
+    }
+  
+    .navbar {
+      background-color: #131722;
+    }
+
+    .navbar-brand {
+      font-family: '', cursive;
+      color: #fff !important;
+      font-size: 24px;
+    }
+
+    .nav-link {
+      color: #f4f4f4 !important;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #d4af37 !important;
+    }
+
+    .active-link {
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .dropdown-menu {
+      background-color: #1c1f24;
+      border: none;
+      border-radius: 0;
+    }
+
+    .dropdown-item {
+      color: #f4f4f4;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #d4af37;
+    }
+
+    .tooltip-inner {
+      background-color: #d4af37;
+      color: #131722;
+    }
+
+    .arrow::before {
+      border-top-color: #d4af37 !important;
+    }
+
+    @media (max-width: 767px) {
+      .navbar {
+        background-color: #1c1f24;
+      }
+    }
+
+    .container {
+      padding-left: 25px;
+      padding-top: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .search-bar {
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: #45a049;
+    }
+
+    .dropdown-container {
+      margin-top: 10px;
+    }
+
+    .dropdown-container select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 5px solid #d1cb0e;
+      cursor: pointer;
+    }
+
+    .widget-container {
+      margin-top: 20px;
+    }
+
+    .widget-wrapper {
+      margin-bottom: 30px; 
+      padding: 10px; 
+      background-color: #1c1f24; 
+      border-radius: 8px; 
+    }
+  </style>
+</head>
+
+<body id="netBackground" class="text-light">
+ 
+  <nav class="navbar navbar-expand-lg navbar-light peach-gradient lighten-3 py-4 font-weight-bold z-depth-1">
+    <a class="navbar-brand" href="home.html">XTrade</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="home.html" data-toggle="tooltip" data-placement="bottom">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crypto.html" data-toggle="tooltip" data-placement="bottom">Crypto Currency</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="forex.html">Forex <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="stocks.html" data-toggle="tooltip" data-placement="bottom">&nbsp;Stocks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html" data-toggle="tooltip" data-placement="bottom">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html" data-toggle="tooltip" data-placement="bottom">Contact us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          {
+            "proName": "FOREXCOM:SPXUSD",
+            "title": "S&P 500 Index"
+          },
+          {
+            "description": "",
+            "proName": "BSE:SENSEX"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:NVDA"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:AAPL"
+          },
+          {
+            "description": "",
+            "proName": "BSE:RELIANCE"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:NFLX"
+          },
+          {
+            "description": "",
+            "proName": "BSE:ADANIPOWER"
+          },
+          {
+            "description": "",
+            "proName": "BSE:HDFCBANK"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:AMZN"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:TSLA"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:META"
+          },
+          {
+            "description": "",
+            "proName": "BSE:ICICIBANK"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:AMD"
+          },
+          {
+            "description": "",
+            "proName": "NASDAQ:INTC"
+          },
+          {
+            "description": "",
+            "proName": "NYSE:MCD"
+
+          },
+          {
+            "description": "",
+            "proName": "XETR:BMW"
+          }
+        ],
+        "showSymbolLogo": true,
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    </script>
+  </div>
+
+  <div class="container">
+    <h1>Share Market Analysis</h1>
+
+    <div class="search-bar">
+      <input type="text" id="symbol-input" placeholder="Enter Stock Symbol" onkeydown="checkEnterKey(event)">
+      <button onclick="loadWidgets()">Show Widgets</button>
+    </div>
+
+    <div class="dropdown-container">
+      <select id="symbol-dropdown" onchange="dropdownChange()">
+        <option value="none" selected disabled>View Popular Stocks</option>
+        <option value="NASDAQ:AAPL">Apple (AAPL)</option>
+        <option value="NASDAQ:GOOGL">Google (GOOGL)</option>
+        <option value="NASDAQ:MSFT">Microsoft (MSFT)</option>
+        <option value="NASDAQ:TSLA">Tesla (TSLA)</option>
+        <option value="NASDAQ:NVDA">Nvidia (NVDA)</option>
+      </select>
+    </div>
+
+    <div class="widget-container" id="widget-container">
+    </div>
+  </div>
+
+  <script>
+    function loadWidgets(symbol) {
+      if (!symbol) {
+        symbol = document.getElementById('symbol-input').value.trim();
+      }
+
+      if (symbol) {
+        document.getElementById('widget-container').innerHTML = '';
+
+        var advancedChartDiv = document.createElement('div');
+        advancedChartDiv.className = 'widget-wrapper';
+        var advancedChartScript = document.createElement('script');
+        advancedChartScript.type = 'text/javascript';
+        advancedChartScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+        advancedChartScript.innerHTML = JSON.stringify({
+          "symbol": symbol,
+          "width": "100%",
+          "height": 610,
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "allow_symbol_change": true,
+          "details": true,
+          "hide_top_toolbar": false,
+          "hide_side_toolbar": true,
+          "save_image": false
+        });
+        advancedChartDiv.appendChild(advancedChartScript);
+        document.getElementById('widget-container').appendChild(advancedChartDiv);
+
+        var technicalAnalysisDiv = document.createElement('div');
+        technicalAnalysisDiv.className = 'widget-wrapper'; 
+        var technicalAnalysisScript = document.createElement('script');
+        technicalAnalysisScript.type = 'text/javascript';
+        technicalAnalysisScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';
+        technicalAnalysisScript.innerHTML = JSON.stringify({
+          "interval": "1m",
+          "width": "100%",
+          "isTransparent": true,
+          "height": 450,
+          "symbol": symbol,
+          "showIntervalTabs": true,
+          "locale": "en",
+          "colorTheme": "dark"
+        });
+        technicalAnalysisDiv.appendChild(technicalAnalysisScript);
+        document.getElementById('widget-container').appendChild(technicalAnalysisDiv);
+
+        var fundamentalDataDiv = document.createElement('div');
+        fundamentalDataDiv.className = 'widget-wrapper'; 
+        var fundamentalDataScript = document.createElement('script');
+        fundamentalDataScript.type = 'text/javascript';
+        fundamentalDataScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-financials.js';
+        fundamentalDataScript.innerHTML = JSON.stringify({
+          "symbol": symbol,
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "height": "500",
+          "locale": "en"
+        });
+        fundamentalDataDiv.appendChild(fundamentalDataScript);
+        document.getElementById('widget-container').appendChild(fundamentalDataDiv);
+
+        var companyProfileDiv = document.createElement('div');
+        companyProfileDiv.className = 'widget-wrapper'; 
+        var companyProfileScript = document.createElement('script');
+        companyProfileScript.type = 'text/javascript';
+        companyProfileScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js';
+        companyProfileScript.innerHTML = JSON.stringify({
+          "symbol": symbol,
+          "height": "330",
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "locale": "en"
+        });
+        companyProfileDiv.appendChild(companyProfileScript);
+        document.getElementById('widget-container').appendChild(companyProfileDiv);
+
+        var topStoriesDiv = document.createElement('div');
+        topStoriesDiv.className = 'widget-wrapper'; 
+        var topStoriesScript = document.createElement('script');
+        topStoriesScript.type = 'text/javascript';
+        topStoriesScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+        topStoriesScript.innerHTML = JSON.stringify({
+          "feedMode": "symbol",
+          "symbol": symbol,
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "displayMode": "regular",
+          "width": "100%",
+          "height": "350",
+          "locale": "en"
+        });
+        topStoriesDiv.appendChild(topStoriesScript);
+        document.getElementById('widget-container').appendChild(topStoriesDiv);
+      }
+    }
+
+    function dropdownChange() {
+      var symbol = document.getElementById('symbol-dropdown').value;
+      loadWidgets(symbol);
+    }
+
+    function checkEnterKey(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); 
+        loadWidgets();
+      }
+    }
+  </script>
+</body>
+<script type="text/javascript">
+  document.body.style.paddingBottom = "2950px";
+</script>
+</html>
